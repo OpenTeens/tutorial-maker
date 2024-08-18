@@ -21,12 +21,10 @@ for i in range(comp_num):
     component_sections = re.split(r"\n{2,10}", component_content)
     component_sections = [section.strip() for section in component_sections]
 
-    print(f"Component Name: {component_name}")
-    print(f"Component Sections: {component_sections}")
+    component_id = hex(hash(component_name + component_content))[2:]
 
     component_parser = importlib.import_module(f"components.{component_name}")
-
-    parsed = component_parser.parse(component_sections)
+    parsed = component_parser.parse(component_sections, component_id)
 
     raw_md = raw_md.replace(f"{TAG}{component_name}{TAG}\n{component_content}{TAG}{component_name}{TAG}", parsed)
 
@@ -53,12 +51,12 @@ with open("output.html", "w") as f:
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
         <style>{css}</style>
+        <script>{js}</script>
+    </html>
     </head>
     <body>
         <article class="markdown-body">
             {html}
         </article>
     </body>
-    <script>{js}</script>
-    </html>
     """)

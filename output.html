@@ -23,26 +23,100 @@ article {
 .card {
     box-shadow: 0 3px 1px -2px #0003, 0 2px 2px 0 #0003, 0 1px 5px 0 #0003;
     border-radius: 8px;
+    background-color: #aaaaaa26;
+}.component.choose {
+    user-select: none;
+}
+
+.component.choose label {
+    display: inline-block;
+    cursor: pointer;
+    width: 60%;
 }</style>
+        <script>window.comp = {};
+window.comp.choose = {};
+window.comp.choose.answer = {};
+
+window.comp.choose.check = function(id) {
+    var comp_id = `comp-choose-${id}`;
+    component = document.getElementById(comp_id);
+
+    var answer = window.comp.choose.answer[id];
+    var userAnswer = [];
+
+    document.getElementsByName(`${comp_id}-choice`).forEach((element) => {
+        if (element.checked) {
+            userAnswer.push(element.value);
+        }
+    });
+
+    if (listeq(answer, userAnswer)) {
+        component.style.backgroundColor = "#2ea04326";
+    } else {
+        component.style.backgroundColor = "#ff000026";
+    }
+}
+
+function listeq(a, b) {
+    if (a.length != b.length) {
+        return false;
+    }
+
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] != b[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}</script>
+    </html>
     </head>
     <body>
         <article class="markdown-body">
             <h1>Hello world</h1>
 <h2>Chapter 1: Introduction</h2>
 <p>This is the introduction to the document.</p>
-<div class='component card choose choose_single'>
+<div class='component card choose' id='comp-choose-x210efa1c77161dc0'>
     <div class='choose_header'>
         What is the answer to the universe?
     </div>
     <div class='choose_options'>
-        <div class='choose_option' data-is-answer='0'>41</div><div class='choose_option' data-is-answer='1'>42</div><div class='choose_option' data-is-answer='0'>43</div><div class='choose_option' data-is-answer='0'>44</div>
+
+<div class='choose_option'>
+    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-41' name='comp-choose-x210efa1c77161dc0-choice' value='41'>
+    <label for='comp-choose-x210efa1c77161dc0-choice-41'>41</label>
+</div>
+
+
+<div class='choose_option'>
+    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-42' name='comp-choose-x210efa1c77161dc0-choice' value='42'>
+    <label for='comp-choose-x210efa1c77161dc0-choice-42'>42</label>
+</div>
+
+
+<div class='choose_option'>
+    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-43' name='comp-choose-x210efa1c77161dc0-choice' value='43'>
+    <label for='comp-choose-x210efa1c77161dc0-choice-43'>43</label>
+</div>
+
+
+<div class='choose_option'>
+    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-44' name='comp-choose-x210efa1c77161dc0-choice' value='44'>
+    <label for='comp-choose-x210efa1c77161dc0-choice-44'>44</label>
+</div>
+
     </div>
+    <div class='choose_footer'>
+        <button class='submit choose_submit' onclick="comp.choose.check('x210efa1c77161dc0')">Submit</button>
+    </div>
+    <script>
+        window.comp.choose.answer['x210efa1c77161dc0'] = ['42'];
+    </script>
 </div>
 
 <h2>Chapter 2: Conclusion</h2>
 <p>This is the conclusion to the document.</p>
         </article>
     </body>
-    <script></script>
-    </html>
     
