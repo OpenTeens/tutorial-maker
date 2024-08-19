@@ -7,3 +7,12 @@
     cursor: pointer;
     width: 60%;
 }
+
+.choose_bg>svg {
+    top: -4em;
+    height: 14rem;
+    opacity: 0.3;
+    position: relative;
+    float: right;
+    display: none;
+}

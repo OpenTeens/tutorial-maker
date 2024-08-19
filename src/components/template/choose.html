@@ -1,0 +1,35 @@
+<!--
+PARAMETERS:
+    {{ comp_id }}
+    {{ sections }}
+
+    {{ question }}
+    {{ choices }}
+    {{ answers }}
+    {{ choose_type }}
+-->
+
+<div class='component card choose' id={{ comp_id }}>
+    <div class='choose_question'>
+        <p>{{ question }}</p>
+    </div>
+    <div class='choose_bg'>
+        <svg id='{{ comp_id }}-bg-correct' t="1724024892870" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1486"><path d="M809.386667 169.386667a32 32 0 0 1 45.226666 0l106.666667 106.666666a32 32 0 0 1 0 45.226667l-533.333333 533.333333a32 32 0 0 1-45.226667 0l-320-320a32 32 0 0 1 0-45.226666l106.666667-106.666667a32 32 0 0 1 45.226666 0l190.72 190.72 404.053334-404.053333z m22.613333 67.84l-404.053333 404.053333a32 32 0 0 1-45.226667 0L192 450.56 130.56 512l274.773333 274.773333L893.44 298.666667 832 237.226667z" fill="#3fb950"></path></svg>
+        <svg id='{{ comp_id }}-bg-wrong' viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="48078"><path d="M156.879158 1023.998603l-0.055886-0.055887L0.000699 866.958071l355.064256-355.020944L0.000699 156.914786 156.935045 0l355.064256 355.020944 157.61896 156.230173-0.690202 0.688805 355.069845 355.020944-156.877062 156.925963-355.121541-354.965057L156.935045 1023.944113z m634.329236-634.318058l-0.055887-0.055887L634.269856 232.768553 867.064955 0l156.932949 156.914786L791.260089 389.624658z" fill="#d81e06"></path></svg>
+    </div>
+    <div class='choose_options'>
+        {%- for c in choices -%}
+            <div class='choose_option'>
+                {%- set choice_id = comp_id + "-choice-" + c[0] -%}
+                <input type='{{ choose_type }}' name='{{ comp_id }}-choice' id='{{ choice_id }}' value='{{ c[0] }}'>
+                <label for='{{ choice_id }}'>{{ c[0] }}</label>
+            </div>
+        {%- endfor -%}
+    </div>
+    <div class='choose_footer'>
+        <button class='submit choose_submit' onclick="comp.choose.check('{{ comp_id }}')">Submit</button>
+    </div>
+    <script>
+        window.comp.choose.answer['{{ comp_id }}'] = {{ answers }};
+    </script>
+</div>

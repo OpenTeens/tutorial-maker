@@ -32,16 +32,26 @@ article {
     display: inline-block;
     cursor: pointer;
     width: 60%;
+}
+
+.choose_bg>svg {
+    top: -4em;
+    height: 14rem;
+    opacity: 0.3;
+    position: relative;
+    float: right;
+    display: none;
 }</style>
         <script>window.comp = {};
 window.comp.choose = {};
 window.comp.choose.answer = {};
 
-window.comp.choose.check = function(id) {
-    var comp_id = `comp-choose-${id}`;
-    component = document.getElementById(comp_id);
+window.comp.choose.check = function(comp_id) {
+    var component = document.getElementById(comp_id);
+    var svg_correct = document.getElementById(`${comp_id}-bg-correct`);
+    var svg_wrong = document.getElementById(`${comp_id}-bg-wrong`);
 
-    var answer = window.comp.choose.answer[id];
+    var answer = window.comp.choose.answer[comp_id];
     var userAnswer = [];
 
     document.getElementsByName(`${comp_id}-choice`).forEach((element) => {
@@ -52,8 +62,12 @@ window.comp.choose.check = function(id) {
 
     if (listeq(answer, userAnswer)) {
         component.style.backgroundColor = "#2ea04326";
+        svg_correct.style.display = "block";
+        svg_wrong.style.display = "none";
     } else {
         component.style.backgroundColor = "#ff000026";
+        svg_correct.style.display = "none";
+        svg_wrong.style.display = "block";
     }
 }
 
@@ -77,41 +91,39 @@ function listeq(a, b) {
             <h1>Hello world</h1>
 <h2>Chapter 1: Introduction</h2>
 <p>This is the introduction to the document.</p>
-<div class='component card choose' id='comp-choose-x210efa1c77161dc0'>
-    <div class='choose_header'>
-        What is the answer to the universe?
+<!--
+PARAMETERS:
+    comp-choose-4a346611d15fdb39
+    ['What is the answer to the universe?', '[ ] 41\n[*] 42\n[ ] 43\n[ ] 44']
+
+    What is the answer to the universe?
+    [('41', False), ('42', True), ('43', False), ('44', False)]
+    ['42']
+    radio
+-->
+
+<div class='component card choose' id=comp-choose-4a346611d15fdb39>
+    <div class='choose_question'>
+        <p>What is the answer to the universe?</p>
     </div>
-    <div class='choose_options'>
-
-<div class='choose_option'>
-    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-41' name='comp-choose-x210efa1c77161dc0-choice' value='41'>
-    <label for='comp-choose-x210efa1c77161dc0-choice-41'>41</label>
-</div>
-
-
-<div class='choose_option'>
-    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-42' name='comp-choose-x210efa1c77161dc0-choice' value='42'>
-    <label for='comp-choose-x210efa1c77161dc0-choice-42'>42</label>
-</div>
-
-
-<div class='choose_option'>
-    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-43' name='comp-choose-x210efa1c77161dc0-choice' value='43'>
-    <label for='comp-choose-x210efa1c77161dc0-choice-43'>43</label>
-</div>
-
-
-<div class='choose_option'>
-    <input type='radio' id='comp-choose-x210efa1c77161dc0-choice-44' name='comp-choose-x210efa1c77161dc0-choice' value='44'>
-    <label for='comp-choose-x210efa1c77161dc0-choice-44'>44</label>
-</div>
-
+    <div class='choose_bg'>
+        <svg id='comp-choose-4a346611d15fdb39-bg-correct' t="1724024892870" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1486"><path d="M809.386667 169.386667a32 32 0 0 1 45.226666 0l106.666667 106.666666a32 32 0 0 1 0 45.226667l-533.333333 533.333333a32 32 0 0 1-45.226667 0l-320-320a32 32 0 0 1 0-45.226666l106.666667-106.666667a32 32 0 0 1 45.226666 0l190.72 190.72 404.053334-404.053333z m22.613333 67.84l-404.053333 404.053333a32 32 0 0 1-45.226667 0L192 450.56 130.56 512l274.773333 274.773333L893.44 298.666667 832 237.226667z" fill="#3fb950"></path></svg>
+        <svg id='comp-choose-4a346611d15fdb39-bg-wrong' viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="48078"><path d="M156.879158 1023.998603l-0.055886-0.055887L0.000699 866.958071l355.064256-355.020944L0.000699 156.914786 156.935045 0l355.064256 355.020944 157.61896 156.230173-0.690202 0.688805 355.069845 355.020944-156.877062 156.925963-355.121541-354.965057L156.935045 1023.944113z m634.329236-634.318058l-0.055887-0.055887L634.269856 232.768553 867.064955 0l156.932949 156.914786L791.260089 389.624658z" fill="#d81e06"></path></svg>
     </div>
+    <div class='choose_options'><div class='choose_option'><input type='radio' name='comp-choose-4a346611d15fdb39-choice' id='comp-choose-4a346611d15fdb39-choice-41' value='41'>
+                <label for='comp-choose-4a346611d15fdb39-choice-41'>41</label>
+            </div><div class='choose_option'><input type='radio' name='comp-choose-4a346611d15fdb39-choice' id='comp-choose-4a346611d15fdb39-choice-42' value='42'>
+                <label for='comp-choose-4a346611d15fdb39-choice-42'>42</label>
+            </div><div class='choose_option'><input type='radio' name='comp-choose-4a346611d15fdb39-choice' id='comp-choose-4a346611d15fdb39-choice-43' value='43'>
+                <label for='comp-choose-4a346611d15fdb39-choice-43'>43</label>
+            </div><div class='choose_option'><input type='radio' name='comp-choose-4a346611d15fdb39-choice' id='comp-choose-4a346611d15fdb39-choice-44' value='44'>
+                <label for='comp-choose-4a346611d15fdb39-choice-44'>44</label>
+            </div></div>
     <div class='choose_footer'>
-        <button class='submit choose_submit' onclick="comp.choose.check('x210efa1c77161dc0')">Submit</button>
+        <button class='submit choose_submit' onclick="comp.choose.check('comp-choose-4a346611d15fdb39')">Submit</button>
     </div>
     <script>
-        window.comp.choose.answer['x210efa1c77161dc0'] = ['42'];
+        window.comp.choose.answer['comp-choose-4a346611d15fdb39'] = ['42'];
     </script>
 </div>
 
