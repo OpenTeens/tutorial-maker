@@ -10,6 +10,7 @@ import jinja2
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", "--input", type=str, required=True)
 parser.add_argument("-o", "--output", type=str, required=True)
+parser.add_argument("-a", "--assets", type=str, default="src")
 args = parser.parse_args()
 
 # READ
@@ -20,7 +21,7 @@ with open(args.input) as f:
 TAG = "-" * 5
 comp_num = raw_md.count(TAG) // 4
 
-environment = jinja2.Environment(loader=jinja2.FileSystemLoader("src/components/template"))
+environment = jinja2.Environment(loader=jinja2.FileSystemLoader(f"{args.assets}/components/template"))
 
 for i in range(comp_num):
     # read
@@ -54,7 +55,7 @@ for i in range(comp_num):
 
 
 # ASSETS
-assets_path = "src/assets"
+assets_path = f"{args.assets}/assets"
 
 css = ""
 for fname in os.listdir(f"{assets_path}/style"):
