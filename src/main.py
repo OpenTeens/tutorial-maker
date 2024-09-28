@@ -1,11 +1,19 @@
 import re
 import importlib
 import os
+import argparse
 
 import markdown
 import jinja2
 
-with open("example.md") as f:
+# ARGUMENTS
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", "--input", type=str, required=True)
+parser.add_argument("-o", "--output", type=str, required=True)
+args = parser.parse_args()
+
+# READ
+with open(args.input) as f:
     raw_md = f.read()
 
 # COMPONENT
@@ -60,7 +68,7 @@ for fname in os.listdir(f"{assets_path}/script"):
 
 # OUTPUT
 html = markdown.markdown(raw_md)
-with open("output.html", "w") as f:
+with open(args.output, "w") as f:
     f.write(f"""
     <!DOCTYPE html>
     <html>
