@@ -1,5 +1,5 @@
 def process(sections, comp_id):
-    choices = [(c[4:], c[1] == '*') for c in sections[1].split('\n')]
+    choices = [(c[6:], c[3] == '*') for c in sections[1].split('\n')]
     answers = [c[0] for c in choices if c[1]]
     choose_type = "radio" if len(answers) == 1 else "checkbox"
 

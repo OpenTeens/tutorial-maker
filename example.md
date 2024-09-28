@@ -5,10 +5,10 @@ This is the introduction to the document.
 -----choose-----
 What is the answer to the universe?
 
-[ ] 41
-[*] 42
-[ ] 43
-[ ] 44
+- [ ] 41
+- [*] 42
+- [ ] 43
+- [ ] 44
 -----choose-----
 
 ## Chapter 2: Conclusion
